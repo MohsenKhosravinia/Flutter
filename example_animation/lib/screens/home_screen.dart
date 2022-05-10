@@ -1,3 +1,4 @@
+import 'package:example_animation/screens/animated_crossfade_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'animated_container_screen.dart';
@@ -10,85 +11,49 @@ import 'pulse_animation_screen.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  static const List<Map<String, Widget>> _screens = [
+    {'Pulse animation': PulseAnimationScreen()},
+    {'List animation': ListAnimationScreen()},
+    {'Animated container': AnimatedContainerScreen()},
+    {'Animated opacity': AnimatedOpacityScreen()},
+    {'Animated padding': AnimatedPaddingScreen()},
+    {'Animated positioned': AnimatedPositionedScreen()},
+    {'Animated crossFade': AnimatedCrossFadeScreen()}
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Animations'),
       ),
-      body: ListView.builder(
-        itemCount: 6,
-        itemBuilder: (BuildContext context, int index) {
-          switch (index) {
-            case 0:
-              return ListTile(
-                title: const Text('Pulse animation'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PulseAnimationScreen()),
-                  );
-                },
-              );
-            case 1:
-              return ListTile(
-                title: const Text('List animation'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ListAnimationScreen()),
-                  );
-                },
-              );
-            case 2:
-              return ListTile(
-                title: const Text('Animated container'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AnimatedContainerScreen()),
-                  );
-                },
-              );
-            case 3:
-              return ListTile(
-                title: const Text('Animated opacity'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AnimatedOpacityScreen()),
-                  );
-                },
-              );
-            case 4:
-              return ListTile(
-                title: const Text('Animated Padding'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AnimatedPaddingScreen()),
-                  );
-                },
-              );
-            case 5:
-              return ListTile(
-                title: const Text('Animated Positioned'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AnimatedPositionedScreen()),
-                  );
-                },
-              );
-          }
-          return Container();
-        },
+      body: Container(
+        color: Colors.indigo,
+        child: ListView.builder(
+          itemCount: _screens.length,
+          itemBuilder: (BuildContext context, int index) {
+            var _screen = _screens[index];
+
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                color: Colors.indigo.withAlpha(230),
+                elevation: 0,
+                child: ListTile(
+                  textColor: Colors.white,
+                  title: Text(_screen.keys.first),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => _screen.values.first),
+                    );
+                  },
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
