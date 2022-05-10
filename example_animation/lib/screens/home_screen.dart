@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'animated_container_screen.dart';
 import 'animated_opacity_screen.dart';
+import 'animated_padding_screen.dart';
 import 'list_animation_screen.dart';
 import 'pulse_animation_screen.dart';
 
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Animations'),
       ),
       body: ListView.builder(
-        itemCount: 4,
+        itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
           switch (index) {
             case 0:
@@ -59,6 +60,17 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const AnimatedOpacityScreen()),
+                  );
+                },
+              );
+            case 4:
+              return ListTile(
+                title: const Text('Animated Padding'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AnimatedPaddingScreen()),
                   );
                 },
               );
