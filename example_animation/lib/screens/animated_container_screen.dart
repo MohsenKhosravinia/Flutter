@@ -10,6 +10,7 @@ class AnimatedContainerScreen extends StatefulWidget {
 
 class _AnimatedContainerScreenState extends State<AnimatedContainerScreen> {
   double _size = 100;
+  Color _color = Colors.red;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +21,14 @@ class _AnimatedContainerScreenState extends State<AnimatedContainerScreen> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
-            color: Colors.red,
+            color: _color,
             width: _size,
             height: _size,
           ),
           onTap: () {
             setState(() {
               _size = _size == 200 ? 100 : 200;
+              _color = _color == Colors.red ? Colors.amber : Colors.red;
             });
           },
         ),
