@@ -1,4 +1,5 @@
 import 'package:example_animation/screens/animated_crossfade_screen.dart';
+import 'package:example_animation/screens/animated_switcher_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'animated_container_screen.dart';
@@ -18,7 +19,8 @@ class HomeScreen extends StatelessWidget {
     {'Animated opacity': AnimatedOpacityScreen()},
     {'Animated padding': AnimatedPaddingScreen()},
     {'Animated positioned': AnimatedPositionedScreen()},
-    {'Animated crossFade': AnimatedCrossFadeScreen()}
+    {'Animated crossFade': AnimatedCrossFadeScreen()},
+    {'Animated switcher': AnimatedSwitcherScreen()}
   ];
 
   @override
